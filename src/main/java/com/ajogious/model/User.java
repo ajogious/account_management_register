@@ -20,6 +20,12 @@ public class User {
 	private String role;
 	private boolean isActive;
 	private String accountExpiring;
+	
+	
+
+	public User() {
+		super();
+	}
 
 	// Constructor
 	public User(String username, String fullName, String phoneNumber, String dateOfBirth, String state, String email,
@@ -156,6 +162,10 @@ public class User {
 	private String hashPassword(String password) {
 		return BCrypt.hashpw(password, BCrypt.gensalt());
 	}
+	
+	public static boolean checkPassword(String plainTextPassword, String hashedPassword) {
+        return BCrypt.checkpw(plainTextPassword, hashedPassword);
+    }
 
 	// Current date and time formatter
 	private String getCurrentDateTime() {
